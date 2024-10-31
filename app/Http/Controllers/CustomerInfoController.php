@@ -95,7 +95,7 @@ class CustomerInfoController extends Controller
         
         // Find the record you want to delete
         $record = $customerInfo::find($customerID); // Replace $id with the ID of the record you want to delete
-        dd($customerInfo);
+        
         $info = $record->toArray();
         //dd( $record['name'] );
         $name = $info['name'];
