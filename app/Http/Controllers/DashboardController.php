@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Resources\CustomerInfoResource;
+use App\Http\Resources\CustomerinfoResource;
 use App\Models\Customerinfo;
 use Illuminate\Http\Request;
 
@@ -11,10 +11,16 @@ class DashboardController extends Controller
     public function index()
     {
        
-        //$totalCustomers = CustomerInfo::query();
+        $query = Customerinfo::query();
+
+        $customerInfo = $query->paginate(30)->onEachSide(1);
+        
        
-        //$totalCustomers = CustomerinfoResource::collection($totalCustomers);
+        $totalCustomers = CustomerinfoResource::collection($customerInfo);
         //dd($totalCustomers);
-        return inertia('Dashboard');
+        return inertia('Dashboard', compact(
+            'totalCustomers',
+           
+        ));
     }
 }
