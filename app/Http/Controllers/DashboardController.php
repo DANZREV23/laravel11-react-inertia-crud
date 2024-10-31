@@ -13,10 +13,10 @@ class DashboardController extends Controller
        
         $query = Customerinfo::query();
 
-        $customerInfo = $query->paginate(30)->onEachSide(1);
-        
+        ///$customerInfo = $query->paginate(30)->onEachSide(1);
+        $totalCustomers = $query->limit(3)->get();
        
-        $totalCustomers = CustomerinfoResource::collection($customerInfo);
+        //$totalCustomers = CustomerinfoResource::collection($customerInfo);
         //dd($totalCustomers);
         return inertia('Dashboard', compact(
             'totalCustomers',
