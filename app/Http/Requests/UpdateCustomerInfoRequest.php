@@ -22,6 +22,7 @@ class UpdateCustomerInfoRequest extends FormRequest
     public function rules(): array
     {
         return [
+            "id" => ['required'],
             "name" => ['required', 'max:255'],
             "address" => ['nullable', 'string'],
         ];

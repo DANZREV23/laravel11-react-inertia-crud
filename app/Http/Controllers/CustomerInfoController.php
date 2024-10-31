@@ -59,9 +59,14 @@ class CustomerInfoController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(CustomerInfo $customerInfo)
+    public function edit(CustomerInfo $customerInfo, $customerID)
     {
-        //
+       $record = $customerInfo::find($customerID);
+        
+        //dd($record);
+        return inertia('Customer/Edit', [
+            'customer' => $record,
+        ]);
     }
 
     /**
@@ -69,7 +74,16 @@ class CustomerInfoController extends Controller
      */
     public function update(UpdateCustomerInfoRequest $request, CustomerInfo $customerInfo)
     {
-        //
+        
+        $data = $request->validated();
+        
+        $name = $data['name'];
+        $id = $data['id'];
+        $result = $customerInfo->where('id', $id )->update($data);
+        
+
+        return to_route('customerinfo.index')
+            ->with('success', "Customer \"$name\" was updated");
     }
 
     /**

@@ -56,7 +56,7 @@ export default function Index({ customerInfo, success }) {
                                             <td className="px-3 py-2">{customerInfo.created_at}</td>
                                             <td className="px-3 py-2">{customerInfo.updated_at}</td>
                                             <td className="px-3 py-2 text-nowrap">
-                                                <Link href={route('customerinfo.edit', customerInfo)} className="font-medium text-blue-600 dark:text-blue-500 hover:underline mx-1">
+                                                <Link href={route('customerinfo.edit', customerInfo.id)} className="font-medium text-blue-600 dark:text-blue-500 hover:underline mx-1">
                                                     Edit
                                                 </Link>
                                                 <button
